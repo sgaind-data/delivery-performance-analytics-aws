@@ -1,0 +1,36 @@
+name: 'delivery_analytics'
+version: '1.0.0'
+config-version: 2
+
+profile: 'delivery_analytics'
+
+model-paths: ["models"]
+analysis-paths: ["analyses"]
+test-paths: ["tests"]
+seed-paths: ["seeds"]
+macro-paths: ["macros"]
+snapshot-paths: ["snapshots"]
+
+clean-targets:
+  - "target"
+  - "dbt_packages"
+
+# Layered architecture:
+#   staging      -> one view per raw table: rename, cast types, light cleaning
+#   intermediate -> views that join/derive business logic (e.g. delivery metrics)
+#   marts        -> tables in a star schema, consumed by the dashboard and analysis
+models:
+  delivery_analytics:
+    staging:
+      +schema: staging
+      +materialized: view
+    intermediate:
+      +schema: intermediate
+      +materialized: view
+    marts:
+      +schema: marts
+      +materialized: table
+
+snapshots:
+  delivery_analytics:
+    +schema: snapshots

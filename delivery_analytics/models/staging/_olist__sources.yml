@@ -1,0 +1,61 @@
+version: 2
+
+sources:
+  - name: olist
+    description: >
+      Raw Olist Brazilian e-commerce data (Kaggle, CC BY-NC-SA 4.0), loaded from S3
+      into Redshift Serverless with COPY. All columns are stored as text; types are
+      cast in the staging layer.
+    database: dev
+    schema: raw_olist
+    tables:
+      - name: orders
+        description: One row per order, with status and the purchase, approval, carrier, delivery and estimated delivery timestamps.
+        columns:
+          - name: order_id
+            tests:
+              - unique
+              - not_null
+
+      - name: order_items
+        description: One row per item within an order, with seller, product, price and freight value.
+        columns:
+          - name: order_id
+            tests:
+              - not_null
+
+      - name: customers
+        description: One row per customer_id (an order-level customer key); customer_unique_id identifies the real person.
+        columns:
+          - name: customer_id
+            tests:
+              - unique
+              - not_null
+
+      - name: sellers
+        description: One row per seller with location.
+        columns:
+          - name: seller_id
+            tests:
+              - unique
+              - not_null
+
+      - name: products
+        description: One row per product with category and physical dimensions.
+        columns:
+          - name: product_id
+            tests:
+              - unique
+              - not_null
+
+      - name: order_payments
+        description: One row per payment installment sequence per order.
+
+      - name: order_reviews
+        description: Customer reviews (score 1-5 and optional comment) per order.
+
+      - name: geolocation
+        description: Zip code prefix to latitude/longitude lookup (contains duplicates per prefix).
+
+      - name: product_category_translation
+        description: Portuguese to English product category name lookup.
