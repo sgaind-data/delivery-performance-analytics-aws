@@ -1,0 +1,24 @@
+test,metric,value
+scope,delivered_orders,96470
+scope,overall_late_rate,0.067731
+welch_t_test,variable,review_score
+welch_t_test,groups,late vs on-time (delivered orders with a review)
+welch_t_test,n_late,6381
+welch_t_test,n_on_time,89443
+welch_t_test,mean_late,2.270491
+welch_t_test,mean_on_time,4.290386
+welch_t_test,pct_1_2_star_late,0.624197
+welch_t_test,pct_1_2_star_on_time,0.092674
+welch_t_test,t_statistic,-100.790844
+welch_t_test,welch_df,6875.63
+welch_t_test,p_value,< 1e-300
+welch_t_test,cohens_d,-1.708862
+chi_squared,variables,customer_state x is_late
+chi_squared,table_shape,27x2
+chi_squared,n,96470
+chi_squared,chi2_statistic,1785.792751
+chi_squared,degrees_of_freedom,26
+chi_squared,p_value,< 1e-300
+chi_squared,cramers_v,0.136057
+chi_squared,cells_expected_below_5,2
+chi_squared,min_expected_count,2.777
