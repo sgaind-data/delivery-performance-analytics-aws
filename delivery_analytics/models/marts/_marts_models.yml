@@ -1,0 +1,109 @@
+version: 2
+
+models:
+  - name: fact_orders
+    description: >
+      Fact table at order-item grain (one row per item in an order), with promised vs
+      actual delivery dates, late flag, delay, price, freight and review score.
+      Order-level fields repeat per item; use count(distinct order_id) or
+      is_first_item_in_order for order-level KPIs.
+    columns:
+      - name: order_item_key
+        description: Primary key = order_id + '-' + order_item_number.
+        data_tests: [unique, not_null]
+      - name: order_id
+        data_tests: [not_null]
+      - name: customer_id
+        data_tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('dim_customers')
+                field: customer_id
+      - name: product_id
+        data_tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('dim_products')
+                field: product_id
+      - name: seller_id
+        data_tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('dim_sellers')
+                field: seller_id
+      - name: purchase_date
+        data_tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('dim_date')
+                field: date_day
+      - name: promised_delivery_date
+        data_tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('dim_date')
+                field: date_day
+      - name: actual_delivery_date
+        description: NULL when the order was not delivered.
+        data_tests:
+          - relationships:
+              arguments:
+                to: ref('dim_date')
+                field: date_day
+      - name: order_status
+        data_tests:
+          - accepted_values:
+              arguments:
+                values: ['delivered', 'shipped', 'canceled', 'unavailable',
+                         'invoiced', 'processing', 'created', 'approved']
+      - name: item_price
+        data_tests: [not_null]
+      - name: freight_value
+        data_tests: [not_null]
+
+  - name: dim_customers
+    description: One row per order-level customer_id.
+    columns:
+      - name: customer_id
+        data_tests: [unique, not_null]
+      - name: customer_state
+        data_tests:
+          - not_null
+          - accepted_values:
+              arguments:
+                values: ['AC', 'AL', 'AP', 'AM', 'BA', 'CE', 'DF', 'ES', 'GO',
+                         'MA', 'MT', 'MS', 'MG', 'PA', 'PB', 'PR', 'PE', 'PI',
+                         'RJ', 'RN', 'RS', 'RO', 'RR', 'SC', 'SP', 'SE', 'TO']
+
+  - name: dim_products
+    description: One row per product with English category name.
+    columns:
+      - name: product_id
+        data_tests: [unique, not_null]
+      - name: category_name
+        data_tests: [not_null]
+
+  - name: dim_sellers
+    description: Current version of each seller, from the SCD Type 2 snapshot snap_sellers.
+    columns:
+      - name: seller_id
+        data_tests: [unique, not_null]
+      - name: seller_state
+        data_tests:
+          - not_null
+          - accepted_values:
+              arguments:
+                values: ['AC', 'AL', 'AP', 'AM', 'BA', 'CE', 'DF', 'ES', 'GO',
+                         'MA', 'MT', 'MS', 'MG', 'PA', 'PB', 'PR', 'PE', 'PI',
+                         'RJ', 'RN', 'RS', 'RO', 'RR', 'SC', 'SP', 'SE', 'TO']
+
+  - name: dim_date
+    description: One row per calendar day, 2016-01-01 to 2018-12-31.
+    columns:
+      - name: date_day
+        data_tests: [unique, not_null]

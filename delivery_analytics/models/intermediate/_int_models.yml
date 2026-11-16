@@ -1,0 +1,43 @@
+version: 2
+
+models:
+  - name: int_orders__delivery_metrics
+    description: >
+      One row per order with delivery performance metrics. Single source of truth for
+      the on-time / late definitions used by the marts, dashboard and statistical tests.
+    columns:
+      - name: order_id
+        data_tests: [unique, not_null]
+      - name: is_late
+        description: Delivered date after estimated delivery date (dates, not timestamps). NULL when not delivered.
+        data_tests:
+          - not_null:
+              config:
+                where: "is_delivered"
+      - name: delay_days
+        description: Delivered date minus estimated date. Positive = late, negative = early. NULL when not delivered.
+        data_tests:
+          - not_null:
+              config:
+                where: "is_delivered"
+      - name: estimated_delivery_date
+        data_tests: [not_null]
+
+  - name: int_order_reviews__deduplicated
+    description: One review per order (most recently answered review kept).
+    columns:
+      - name: order_id
+        data_tests:
+          - unique
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('stg_olist__orders')
+                field: order_id
+      - name: review_score
+        data_tests:
+          - not_null
+          - accepted_values:
+              arguments:
+                values: [1, 2, 3, 4, 5]
+                quote: false
