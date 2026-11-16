@@ -1,0 +1,23 @@
+# Python virtual environment
+.venv/
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+
+# dbt build artifacts and local state
+target/
+dbt_packages/
+logs/
+.user.yml
+
+# Secrets: never commit credentials
+profiles.yml
+.env
+*.pem
+
+# Raw data (download from Kaggle instead)
+data/
+archive/
+
+# macOS
+.DS_Store

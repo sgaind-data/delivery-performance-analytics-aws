@@ -1,0 +1,4 @@
+# Pinned to dbt Core v1 (v2 needs an experimental parser and is still new).
+# Requires Python 3.10-3.12. This project uses Python 3.12.
+dbt-core>=1.12,<2.0
+dbt-redshift>=1.11,<2.0
