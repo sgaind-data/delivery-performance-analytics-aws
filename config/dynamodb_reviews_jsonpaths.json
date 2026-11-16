@@ -1,0 +1,11 @@
+{
+  "jsonpaths": [
+    "$.Item.order_id.S",
+    "$.Item.review_id.S",
+    "$.Item.review_score.N",
+    "$.Item.review_comment_title.S",
+    "$.Item.review_comment_message.S",
+    "$.Item.review_creation_date.S",
+    "$.Item.review_answer_timestamp.S"
+  ]
+}

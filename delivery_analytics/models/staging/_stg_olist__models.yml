@@ -104,6 +104,21 @@ models:
                 values: [1, 2, 3, 4, 5]
                 quote: false
 
+  - name: stg_dynamodb__order_reviews
+    description: Reviews from the DynamoDB export, typed. The pipeline's review source. Not unique per order.
+    columns:
+      - name: review_id
+        data_tests: [not_null]
+      - name: order_id
+        data_tests: [not_null]
+      - name: review_score
+        data_tests:
+          - not_null
+          - accepted_values:
+              arguments:
+                values: [1, 2, 3, 4, 5]
+                quote: false
+
   - name: stg_olist__product_category_translation
     description: Portuguese to English category lookup.
     columns:

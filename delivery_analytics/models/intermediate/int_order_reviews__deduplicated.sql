@@ -1,10 +1,10 @@
--- One review per order.
+-- One review per order, sourced from the DynamoDB export.
 -- The raw data has duplicate review_ids and some orders with several reviews.
 -- Rule: keep the most recently answered review (then most recently created,
 -- then review_id as a final tie-breaker so the result is deterministic).
 
 with reviews as (
-    select * from {{ ref('stg_olist__order_reviews') }}
+    select * from {{ ref('stg_dynamodb__order_reviews') }}
 ),
 
 ranked as (
