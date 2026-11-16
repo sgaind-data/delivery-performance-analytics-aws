@@ -1,0 +1,18 @@
+# airflow/include/profiles.yml
+# dbt connection profile used INSIDE the Airflow container.
+# The password is read from the DBT_REDSHIFT_PASSWORD environment variable,
+# which Astro loads from airflow/.env (git-ignored). No secrets in this file.
+delivery_analytics:
+  target: dev
+  outputs:
+    dev:
+      type: redshift
+      host: olist-wg.387265682464.us-east-2.redshift-serverless.amazonaws.com
+      port: 5439
+      dbname: dev
+      user: sarika_admin
+      password: "{{ env_var('DBT_REDSHIFT_PASSWORD') }}"
+      schema: analytics
+      threads: 4
+      sslmode: require
+      connect_timeout: 30

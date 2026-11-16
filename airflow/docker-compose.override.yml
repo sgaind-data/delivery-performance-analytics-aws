@@ -1,0 +1,7 @@
+# Mount the dbt project (one folder up, in the repo root) into the Airflow
+# scheduler, which runs the tasks. Airflow always uses the same files you edit
+# locally, so there is no second copy to keep in sync.
+services:
+  scheduler:
+    volumes:
+      - ../delivery_analytics:/usr/local/airflow/dbt:rw
