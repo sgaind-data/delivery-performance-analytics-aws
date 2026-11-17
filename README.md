@@ -17,11 +17,11 @@ All numbers are computed by [`analysis/closeout_metrics.py`](analysis/closeout_m
 | Finding | Evidence |
 | --- | --- |
 | **93.23% of delivered orders arrive on time**; late orders average **10.62 days** late (median 7) | `b2_on_time_and_delay.csv` |
-| **Late deliveries cut review scores from 4.29★ to 2.27★**; 62.4% of late orders get 1–2 stars vs 9.3% on time | Welch t-test: t = −100.79, p < 0.001, Cohen's d = −1.71 (`stats_results.csv`) |
+| **Late deliveries are associated with lower review scores: 2.27★ vs 4.29★ on time**; 62.4% of late orders get 1–2 stars vs 9.3% on time | Welch t-test: t = −100.79, p < 0.001, Cohen's d = −1.71 (`stats_results.csv`) |
 | **Slow seller dispatch is the strongest late-delivery signal**: orders handed to the carrier more than 7 days after approval are late 21.39% of the time vs 3.81% within 1 day | `a6_late_by_dispatch_speed.csv` |
 | **Cross-state shipping** is late 8.03% vs 4.52% same-state, and accounts for 76.1% of all late orders | `a6_late_by_shipping_route.csv` |
 | **Lateness depends on customer state, but only modestly**: worst large-volume state AL is 78.59% on time vs SP 95.51% | Chi-squared: χ² = 1,785.79, df = 26, p < 0.001, Cramér's V = 0.136 |
-| **Peak periods break delivery promises**: late rate was 12.40% for November 2017 purchases and 18.96% for March 2018, vs 6.77% overall | `a6_late_by_purchase_month.csv` |
+| **Late rates spike in peak periods**: late rate was 12.40% for November 2017 purchases and 18.96% for March 2018, vs 6.77% overall | `a6_late_by_purchase_month.csv` |
 | **Freight averages R$ 22.79 per order** (16.63% of item value) and is highest in the North and Northeast | `b4_freight_overall.csv`, `b4_freight_by_state.csv` |
 
 These are associations, not proven causes; see the full case study for caveats.
