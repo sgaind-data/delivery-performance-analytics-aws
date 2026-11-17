@@ -141,6 +141,8 @@ results/             Saved outputs and screenshots behind every reported number
 
 Built for **$0**: AWS sign-up credits, the Redshift Serverless free-trial credit and DynamoDB's free storage. Guardrails: a $20 account spend limit, $1 and $5 budget alerts, Redshift capped at 4 RPUs with an 8 RPU-hour daily limit, and a single-IP security group rule. Total cost reported by Cost Explorer on 2026-11-17: **$0.00**, with $299.29 of the $300 Redshift trial credit unused.
 
+**Teardown:** after the results were saved, every AWS resource was deleted on 2026-11-17: the Redshift Serverless workgroup and namespace, the DynamoDB table, the S3 bucket, the IAM role, the security group rule and the CloudWatch alarm. The `results/` folder, the static dbt docs in `docs/` and the published Tableau dashboard preserve every output.
+
 ## Notes and path to production
 
 - **QuickSight** was the planned dashboard tool, but the AWS account type used here reports "Access to this service is not supported" for QuickSight and Amazon Quick, so Tableau Public was used.
