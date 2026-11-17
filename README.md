@@ -50,7 +50,7 @@ flowchart LR
 
 ## Star schema
 
-`fact_orders` is at **order-item grain** (112,650 rows, 98,666 orders). Order-level fields (delivery dates, late flag, review score) repeat on each item, so order-level KPIs use `count(distinct order_id)` or `is_first_item_in_order`.
+`fact_orders` is at **order-item grain** (112,650 rows covering 98,666 orders of every status; 96,470 of those orders are delivered and form the analysis scope). Order-level fields (delivery dates, late flag, review score) repeat on each item, so order-level KPIs use `count(distinct order_id)` or `is_first_item_in_order`.
 
 ```mermaid
 erDiagram
