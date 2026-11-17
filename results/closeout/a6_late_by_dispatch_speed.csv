@@ -1,0 +1,6 @@
+dispatch_bucket,delivered_orders,late_rate_pct
+0-1 days,29937,3.81
+1-3 days,36471,5.74
+3-7 days,23544,8.10
+7+ days,6503,21.39
+unknown,15,6.67

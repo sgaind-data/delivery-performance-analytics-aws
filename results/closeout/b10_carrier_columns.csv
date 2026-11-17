@@ -1,0 +1,8 @@
+table_schema,table_name,column_name
+intermediate,int_orders__delivery_metrics,order_delivered_carrier_at
+marts,fact_orders,carrier_handoff_date
+marts,fact_orders,shipping_limit_at
+raw_olist,order_items,shipping_limit_date
+raw_olist,orders,order_delivered_carrier_date
+staging,stg_olist__order_items,shipping_limit_at
+staging,stg_olist__orders,order_delivered_carrier_at

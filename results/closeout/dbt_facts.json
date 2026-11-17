@@ -1,0 +1,40 @@
+{
+  "models_total": 16,
+  "models_by_layer": {
+    "marts": 5,
+    "staging": 9,
+    "intermediate": 2
+  },
+  "model_names": [
+    "dim_customers",
+    "dim_date",
+    "dim_products",
+    "dim_sellers",
+    "fact_orders",
+    "int_order_reviews__deduplicated",
+    "int_orders__delivery_metrics",
+    "stg_dynamodb__order_reviews",
+    "stg_olist__customers",
+    "stg_olist__order_items",
+    "stg_olist__order_payments",
+    "stg_olist__order_reviews",
+    "stg_olist__orders",
+    "stg_olist__product_category_translation",
+    "stg_olist__products",
+    "stg_olist__sellers"
+  ],
+  "tests_total": 90,
+  "tests_generic": 89,
+  "tests_singular": 1,
+  "snapshots": [
+    "snap_sellers"
+  ],
+  "sources": 10,
+  "last_build_command": "build",
+  "last_build_generated_at": "2026-11-17T19:35:01.280423Z",
+  "last_build_elapsed_seconds": 108.22,
+  "last_build_status_counts": {
+    "success": 17,
+    "pass": 90
+  }
+}
