@@ -1,0 +1,8 @@
+kpi,value
+delivered_orders,96470.0
+late_orders,6534.0
+on_time_rate_pct,93.2269
+avg_delay_days_late_orders,10.6201
+median_delay_days_late_orders,7.0
+avg_freight_per_order_brl,22.7858
+freight_pct_of_items_value,16.6271

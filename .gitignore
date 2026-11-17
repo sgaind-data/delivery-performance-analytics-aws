@@ -21,3 +21,6 @@ archive/
 
 # macOS
 .DS_Store
+
+# Tableau extracts (regenerate with analysis/export_dashboard_data.py)
+dashboard/*.csv
