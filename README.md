@@ -4,6 +4,10 @@ End-to-end analytics project on the public [Olist Brazilian E-Commerce dataset](
 
 **Live dashboard:** [Olist Delivery Performance on Tableau Public](https://public.tableau.com/app/profile/sarika.gaind6780/viz/AWSDeliveryAnalysis/DeliveryPerformance)
 
+
+**Business analysis case study:** [delivery-performance-ba-case-study](https://github.com/sgaind-data/delivery-performance-ba-case-study): problem statement, stakeholder map, BRD, user stories, process maps and UAT plan built on this pipeline.
+
+
 ![Dashboard](results/dashboard.png)
 
 ## Key findings
